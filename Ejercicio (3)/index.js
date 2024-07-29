@@ -1,19 +1,32 @@
-let lavadoraGrande = 4000
-let lavadoraPqueña = 3000
-let valorTotal = 0
-let lavadorasPrestadas = 0 
-let tipoDeLavadora = Number(prompt("ingrese 1 para lavadora grande o ingrese 2 para lavadora pequeña"))
-if(tipoDeLavadora == 1){
-    let lavadoras1Prestadas = Number (prompt("ingrese el numero de lavadoras que necesita"))
-    let valor1 = lavadoras1Prestadas * lavadoraGrande
-}else if(tipoDeLavadora == 2){
-    let lavadoras2Prestadas = Number (prompt("ingrese el numero de lavadoras que necesita"))
-    let valor2 = lavadoras2Prestadas * lavadoraPqueña
-}else if(lavadorasPrestadas < 3){
+let lavadoraGrande = 4000;
+let lavadoraPequeña = 3000;
+let valorTotal = 0;
+let lavadorasPrestadas = 0;
 
-    valorTotal = valor1 + valor2
+alert("Bienvenido al sistema de alquiler de lavadoras.");
+
+let seleccionGrande = Number(prompt("¿Desea alquilar lavadoras grandes? Ingrese 1 para Sí, o cualquier otro número para No"));
+
+if (seleccionGrande === 1) {
+    let lavadorasGrandesPrestadas = Number(prompt("Ingrese el número de lavadoras grandes que necesita:"));
+    valorTotal += lavadorasGrandesPrestadas * lavadoraGrande;
+    lavadorasPrestadas += lavadorasGrandesPrestadas;
 }
-else if(lavadorasPrestadas > 3){
-        valorTotal - 3%valorTotal
+
+let seleccionPequena = Number(prompt("¿Desea alquilar lavadoras pequeñas? Ingrese 2 para Sí, o cualquier otro número para No"));
+
+if (seleccionPequena === 2) {
+    let lavadorasPequenasPrestadas = Number(prompt("Ingrese el número de lavadoras pequeñas que necesita:"));
+    valorTotal += lavadorasPequenasPrestadas * lavadoraPequeña;
+    lavadorasPrestadas += lavadorasPequenasPrestadas;
 }
-alert(`el valor total es ${valorTotal}`)
+
+if (lavadorasPrestadas === 0) {
+    alert("No ha seleccionado ninguna lavadora para alquilar.");
+} else {
+    if (lavadorasPrestadas > 3) {
+        let descuento = valorTotal * 0.03;
+        valorTotal -= descuento;
+        }
+    alert(`El valor total es ${valorTotal}`);
+}
